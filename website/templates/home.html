@@ -1,0 +1,48 @@
+{% extends "base.html" %} {% block title %}PyFlora{% endblock %} {% block content
+  %}
+  {% if user.is_authenticated %}
+  <h3 align="center">Pyflora Posude</h3>
+  <form method = "POST">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Lokacija</th>
+        <th scope="col">Ime</th>
+        <th scope="col">Status</th>
+        <th scope="col">Slika</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for pot in pots %}
+      <tr>
+        <th scope="row">{{ pot.id }}</th>
+        <td>{{ pot.location }}</td>
+        <td>{{ pot.name }}</td>
+        {% if status is defined %}
+        <td id="status"> {{ status }}</td>
+        {% else %}
+        <td>{{ pot.status }}</td>
+        {% endif %}
+        <td><figure class="figure">
+          <img src="/static/{{ pot.img }}" class="thumbnail" alt="{{ pot.img }}"width="75" height="75">
+        </figure>
+        {% if status is defined %}
+          <a class="btn btn-success float_right" id="value" onclick="changeStatus()">Odradi radnju</a>
+         {% endif %}
+        <a class="btn btn-warning float-right" href="/updatepot/{{ pot.id }}">Uredi</a>
+        <a class="btn btn-danger float-right" href="/deletepots/{{ pot.id }}">Izbriši</a>
+        <a class="btn btn-primary float-right" href="/simulate/{{ pot.id }}">Simulate</a>
+      </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <button type="button" class="btn btn-primary" onclick="window.location.href='/createpot';">Dodaj novu posudu</button> 
+  <script>
+    function changeStatus() {
+       document.getElementById("status").textContent = 'OK';
+    }
+  </script>
+  {% endif %}
+  {% endblock %}

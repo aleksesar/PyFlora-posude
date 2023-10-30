@@ -1,0 +1,43 @@
+{% extends "base.html" %} {% block title %}Create Plant{% endblock %} {% block content
+  %}
+  {% if user.username == 'admin' %}
+  <div class="container">
+    <form enctype="multipart/form-data" method="POST">
+    <h3 align="center">Dodaj nove biljke</h3>
+    <table class="table">
+        <tr>
+            <td>Ime Biljke</td>
+            <td><input type="text" name="name" class="form-control" id="name" required="1" /></td>
+        </tr>
+        <tr>
+            <td>Vlaga</td>
+            <td><input type="text" name="humidity" class="form-control" id="humidity" required="1"/></td>
+        </tr>
+        <tr>
+            <td>Ph</td>
+            <td><input type="text" name="ph" class="form-control" id="ph" required="1"></td>
+        </tr>  
+        <tr>
+            <td>Sunce</td>
+            <td><input type="text" name="sun" class="form-control" id="sun" required="1"></td>
+        </tr>
+         <tr>
+            <td>Temperatura</td>
+            <td><input type="text" name="temperature" class="form-control" id="temperature" required="1"></td>
+        </tr> 
+        <tr>
+            <td>Slika</td>
+            <td><input type="file" accept="image/*" class="form-control" name="image" id="image"></td>
+        </tr>    
+        <tr>
+            <td colspan="2">
+                <input type="submit" name="submit" value="Spremi" class="btn btn-warning">
+            </td>  
+    </table>
+      
+      </form>
+    
+    </div>
+    {% endif %}
+  {% endblock %}
+

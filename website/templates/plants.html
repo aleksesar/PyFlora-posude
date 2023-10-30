@@ -1,0 +1,42 @@
+{% extends "base.html" %} {% block title %}Plants{% endblock %} {% block content
+  %}
+  {% if user.is_authenticated %}
+  <h3 align="center">Biljke</h3>
+  <form method = "POST">
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Naziv</th>
+        <th scope="col">Humidity</th>
+        <th scope="col">Ph</th>
+        <th scope="col">Sun</th>
+        <th scope="col">Temperature</th>
+        <th scope="col">Slika</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for plant in plants %}
+      <tr>
+        <th scope="row">{{ plant.id }}</th>
+        <td>{{ plant.name }}</td>
+        <td>{{ plant.humidity }}</td>
+        <td>{{ plant.ph }}</td>
+        <td>{{ plant.sun }}</td>
+        <td>{{ plant.temperature }}</td>
+        <td><figure class="figure">
+          <img src="/static/{{ plant.image }}" class="thumbnail" alt="{{ plant.image }}"width="75" height="75">
+        </figure>
+        <a class="btn btn-warning float-right" href="/updateplant/{{ plant.id }}">Uredi</a>
+        <a class="btn btn-danger float-right" href="/delete/{{ plant.id }}" >Izbriši</a>
+      </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% if user.username == 'admin' %}
+  <button type="button" class="btn btn-primary" onclick="window.location.href='/createplant';" >Dodaj novu biljku</button> 
+</form>
+  {% endif %}
+   {% endif %}
+  {% endblock %}

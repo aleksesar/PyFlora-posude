@@ -1,0 +1,6 @@
+flask
+flask-login
+flask-sqlalchemy
+Jinja2
+paho-mqtt
+

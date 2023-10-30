@@ -1,0 +1,38 @@
+{% extends "base.html" %} {% block title %}Create Pot{% endblock %} {% block content
+  %}
+  {% if user.username == 'admin' %}
+  <div class="container">
+    <form enctype="multipart/form-data" method="POST">
+    <h3 align="center">Dodaj nove posude</h3>
+    <table class="table">
+        <tr>
+            <td>Lokacija</td>
+            <td><input type="text" name="location" class="form-control" id="location" required="1" /></td>
+        </tr>
+        <tr>
+            <td><label for="biljka">Ime biljke</label></td>
+            <td><select name="name" id="name" class="form-control">
+            {% for plant in plants %}
+              <option value="{{ plant.name }}">{{ plant.name }}</option>
+              {% endfor %}
+            </select></td>
+        </tr>
+        <tr>
+            <td>Status</td>
+            <td><input type="text" name="status" class="form-control" id="status" required="1"></td>
+        </tr>  
+            <td>Slika</td>
+            <td><input type="file" accept="image/*" class="form-control" name="img" id="img"></td>
+        </tr>    
+        <tr>
+            <td colspan="2">
+                <input type="submit" name="submit" value="Spremi" class="btn btn-warning">
+            </td>  
+    </table>
+      
+      </form>
+    
+    </div>
+    {% endif %}
+  {% endblock %}
+

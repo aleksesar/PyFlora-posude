@@ -1,0 +1,47 @@
+{% extends "base.html" %} {% block title %}Update Plant{% endblock %} {% block content
+  %}
+  {% if user.username == 'admin' %}
+  <div class="container">
+    <form enctype="multipart/form-data" action="/updateplant/{{ plant_to_update.id }}" method="POST">
+    <h3 align="center">Dodaj nove biljke</h3>
+    <table class="table">
+        <tr>
+            <td>Ime Biljke</td>
+            <td><input type="text" name="name" class="form-control" id="name" value="{{ plant_to_update.name }}" /></td>
+        </tr>
+        <tr>
+            <td>Vlaga</td>
+            <td><input type="text" name="humidity" class="form-control" id="humidity" value="{{ plant_to_update.humidity }}"/></td>
+        </tr>
+        <tr>
+            <td>Ph</td>
+            <td><input type="text" name="ph" class="form-control" id="ph" value="{{ plant_to_update.ph }}"></td>
+        </tr>  
+        <tr>
+            <td>Sunce</td>
+            <td><input type="text" name="sun" class="form-control" id="sun" value="{{ plant_to_update.sun }}"></td>
+        </tr>
+         <tr>
+            <td>Temperatura</td>
+            <td><input type="text" name="temperature" class="form-control" id="temperature" value="{{ plant_to_update.temperature }}"></td>
+        </tr> 
+        <tr>
+            <td>Trenutna slika</td>
+            <td><img src="/static/{{ plant_to_update.image }}" class="thumbnail" alt="{{ plant_to_update.image }}"width="75" height="75"></td>
+        </tr> 
+         <tr>
+            <td>Slika</td>
+           <td><input type="file" accept="image/*" class="form-control" name="image" id="image" value="{{ plant_to_update.image }}"></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" class="btn btn-primary float-right" value="Uredi">
+            </td>  
+    </table>
+      
+      </form>
+    
+    </div>
+    {% endif %}
+  {% endblock %}
+
