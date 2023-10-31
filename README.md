@@ -1,5 +1,5 @@
 # PyFlora-pots
-Simulation: house plants care
-Automatic random choose plant status.
-We need by clicking change status in OK.
+Simulation: house plants care <br>
+Automatic random choose plant status. <br>
+We need by clicking change status in OK. <br>
 Administrator can create, update or delete plant.
